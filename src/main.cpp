@@ -50,7 +50,7 @@ map<uint256, map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "NyanCoin Signed Message:\n";
+const string strMessageMagic = "VoCains Signed Message:\n";
 
 double dHashesPerSec;
 int64 nHPSTimerStart;
@@ -829,7 +829,7 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 337 * COIN;
-    nSubsidy >>= (nHeight / 337000); // Nyancoin: 370k blocks
+    nSubsidy >>= (nHeight / 337000); // vocains: 370k blocks
     
       if(nHeight < 50){
         nSubsidy = 67400 * COIN; // 1% premine
@@ -838,8 +838,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 3 * 60 * 60; // NyanCoin: 3 hours
-static const int64 nTargetSpacing = 60; // NyanCoin: 1 minute blocks
+static const int64 nTargetTimespan = 3 * 60 * 60; // VoCains: 3 hours
+static const int64 nTargetSpacing = 60; // VoCains: 1 minute blocks
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 static const int64 nReTargetHistoryFact = 4; // look at 4 times the retarget
@@ -1181,7 +1181,7 @@ bool CTransaction::ConnectInputs(MapPrevTx inputs,
 {
     // Take over previous transactions' spent pointers
     // fBlock is true when this is called from AcceptBlock when a new best-block is added to the blockchain
-    // fMiner is true when called from the internal nyancoin miner
+    // fMiner is true when called from the internal vocains miner
     // ... both are false when called from CTransaction::AcceptToMemoryPool
     if (!IsCoinBase())
     {
@@ -1928,7 +1928,7 @@ bool CheckDiskSpace(uint64 nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        uiInterface.ThreadSafeMessageBox(strMessage, "NyanCoin", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
+        uiInterface.ThreadSafeMessageBox(strMessage, "VoCains", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         StartShutdown();
         return false;
     }
@@ -2005,7 +2005,7 @@ bool LoadBlockIndex(bool fAllowNew)
     
         
         // Genesis block
-        const char* pszTimestamp = "NYAN NYAN NYAN NYAN NEW YEARS 2014";
+        const char* pszTimestamp = "VCs VCs VCs VCs NEW YEARS 2014";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);

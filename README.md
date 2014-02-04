@@ -1,8 +1,8 @@
-NyanCoin (NYAN, Ɲ)
+vocains (VCs, >)
 ===========
 
 <a href="http://imgur.com/Jm2KFOD"><img src="http://i.imgur.com/Jm2KFOD.png" title="Hosted by imgur.com" /></a>
-
+<size += 17>POpiPopiPO PI Po</size>
 
 POW Scrypt Cryptocurrency
 
@@ -16,6 +16,8 @@ Subsidy halves in 337k blocks
 
 3 hour retarget 
 
-RPC port 33700
+RPC port 2003
 
-P2P port 33701
+P2P port 2007
+
+testnet port 2013

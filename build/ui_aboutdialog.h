@@ -119,12 +119,12 @@ public:
 
     void retranslateUi(QDialog *AboutDialog)
     {
-        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About NyanCoin", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("AboutDialog", "<b>NyanCoin</b> version", 0, QApplication::UnicodeUTF8));
+        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About VoCains", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("AboutDialog", "<b>VoCains</b> version", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("AboutDialog", "\n"
 "          Copyright \302\251 2009-2012 Bitcoin Developers\n"
 "          Copyright \302\251 2011-2012 Litecoin Developers\n"
-"          Copyright \302\251 2013 Nyancoin Developers\n"
+"          Copyright \302\251 2013 vocains Developers\n"
 "\n"
 "          This is experimental software.\n"
 "\n"
