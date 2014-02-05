@@ -828,7 +828,7 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 337 * COIN;
+    int64 nSubsidy = 200 * COIN;
     nSubsidy >>= (nHeight / 337000); // vocains: 370k blocks
     
       if(nHeight < 50){
@@ -838,11 +838,11 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 3 * 60 * 60; // VoCains: 3 hours
-static const int64 nTargetSpacing = 60; // VoCains: 1 minute blocks
+static const int64 nTargetTimespan = 44444; // VoCains: 1 second <retarget //shishishi medium great value
+static const int64 nTargetSpacing = 1; // VoCains: 1 second blocks //tryedto use low time
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
-static const int64 nReTargetHistoryFact = 4; // look at 4 times the retarget
+static const int64 nReTargetHistoryFact = 1; // look at 1 times the retarget ///lo value
                                              // interval into the block history
 
 //
@@ -860,10 +860,10 @@ unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
     bnResult.SetCompact(nBase);
     while (nTime > 0 && bnResult < bnProofOfWorkLimit)
     {
-        // Maximum 400% adjustment...
-        bnResult *= 4;
-        // ... in best-case exactly 4-times-normal target time
-        nTime -= nTargetTimespan*4;
+        // Maximum 200% adjustment...
+        bnResult *= 2;
+        // ... in best-case exactly 2-times-normal target time
+        nTime -= nTargetTimespan*1;
     }
     if (bnResult > bnProofOfWorkLimit)
         bnResult = bnProofOfWorkLimit;

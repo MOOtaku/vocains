@@ -34,7 +34,7 @@ static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const int64 MIN_TX_FEE = 10000000;
 static const int64 MIN_RELAY_TX_FEE = MIN_TX_FEE;
-static const int64 MAX_MONEY = 337000000 * COIN; // maximum number of coins
+static const int64 MAX_MONEY = 9223372036854775807 * COIN; // maximum number of coins///an int64 Value //no sense in it now
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 static const int COINBASE_MATURITY = 15;
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -541,7 +541,7 @@ public:
     {
         // Large (in bytes) low-priority transactions
         // need a fee.
-        return dPriority > COIN * 576 / 250;
+        return dPriority > COIN * 9.223.372.036.854.775.807 / 250; //coins per day ////I need better values ^°'
     }
 
     int64 GetMinFee(unsigned int nBlockSize=1, bool fAllowFree=true, enum GetMinFee_mode mode=GMF_BLOCK) const
@@ -551,7 +551,7 @@ public:
 
         unsigned int nBytes = ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION);
         unsigned int nNewBlockSize = nBlockSize + nBytes;
-        int64 nMinFee = (1 + (int64)nBytes / 1000) * nBaseFee;
+        int64 nMinFee = (1 + (int64)nBytes / 4) * nBaseFee;
 
         if (fAllowFree)
         {
@@ -559,14 +559,14 @@ public:
             {
                 // Transactions under 10K are free
                 // (about 4500bc if made of 50bc inputs)
-                if (nBytes < 10000)
-                    nMinFee = 0;
+                if (nBytes < 1024)
+                    nMinFee = 1000; //don't Spam too much, better idea than this please
             }
             else
             {
                 // Free transaction area
-                if (nNewBlockSize < 27000)
-                    nMinFee = 0;
+                if (nNewBlockSize < 27000) //Bad Spam hider lucky about better numbes
+                    nMinFee = 1000;
             }
         }
 

@@ -21,3 +21,6 @@ RPC port 2003
 P2P port 2007
 
 testnet port 2013
+
+Coins per Block 200 
+Limited by your >Dreams! int64 for V!1
